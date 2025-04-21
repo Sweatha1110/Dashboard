@@ -1,0 +1,86 @@
+body{
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.app-container
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.auth-card
+{
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.auth-card h2 {
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.form-control {
+  border-radius: 10px;
+}
+
+button {
+  border-radius: 10px;
+  width: 100%;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.toggle-btn {
+  margin-top: 15px;
+  background-color: transparent;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.message {
+  margin-top: 15px;
+  font-weight: 500;
+  color: green;
+}
+
+.error {
+  color: red;
+}
+
+.landing-page {
+  text-align: center;
+  padding: 50px;
+}
+
+.landing-page h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.landing-page p {
+  font-size: 1.2rem;
+  color: #444;
+  margin-bottom: 30px;
+}
+
+.logout-btn {
+  padding: 10px 20px;
+  font-weight: bold;
+  background-color: #dc3545;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  width: fit-content;
+}
