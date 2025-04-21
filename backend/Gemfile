@@ -1,0 +1,14 @@
+
+
+source "https://rubygems.org"
+
+
+
+gem 'sinatra'
+gem 'json'
+gem 'rack-cors'
+gem 'sqlite3'
+gem 'jwt'
+gem 'dotenv'
+gem 'sinatra-cross_origin'
+
