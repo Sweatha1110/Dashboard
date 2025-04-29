@@ -1,0 +1,48 @@
+.signup-container
+{
+    padding: 20px;
+    background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 10px;
+    width: auto;
+    margin: 0 auto;
+    box-shadow: 0 4px 6px rgba(0,0, 0, 1);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    /* background-image: linear-gradient(-225deg, #65379B 0%, #886AEA 53%, #6457C6 100%); */
+    /* background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%); */
+    /* background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%); */
+    /* padding: 2rem; */
+    
+
+}
+
+.signup h1
+{
+  color: rgb(6, 43, 44);
+  /* padding-left: 53px; */
+  margin: 0;
+  /* padding: auto; */
+  display: flex;
+  justify-content: center;
+  font-style:normal;
+  font-weight: bold;
+  
+}
+
+.input , button
+{ 
+  margin: 10px 0;
+  width: 100%;
+  border: 1px rgb(81, 198, 245); 
+  /* padding-top: 10px; */
+
+}
+
+input:focus,button:focus
+{
+  outline: none;
+  /* border-color: black; */
+}

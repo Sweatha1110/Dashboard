@@ -1,0 +1,64 @@
+.container
+{
+  min-height: 80vh;
+}
+
+   .About-us {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.1);
+  }
+  
+  .About-us h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .About-us p, .About-us li {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  .req-content
+  {
+   
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    
+  }
+  .card {
+    width: auto;
+    margin-top: 0;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+  }
+  .card h2{
+    display: flex;
+    justify-content: center;
+  }
+  
+  .req-services, .used-services-list {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 0.5rem;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.05);
+  }
+  
+  .request-btn {
+    margin-top: 0.5rem;
+    width: auto;
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .request-btn:hover {
+    background-color: #0b5ed7;
+  }

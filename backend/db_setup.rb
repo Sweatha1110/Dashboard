@@ -1,37 +1,41 @@
+require 'pg'
+require 'dotenv/load'
+
+
+conn=PG.connect(
+    dbname:ENV['DB_NAME'],
+    user:ENV['DB_USER'],
+    password:ENV['DB_PASSWORD'],
+    host:ENV['DB_HOST'] 
+)
+
+conn.exec <<-SQL
+CREATE TABLE IF NOT EXISTS users(
+id SERIAL PRIMARY KEY,
+username TEXT UNIQUE NOT NULL,
+password_digest TEXT NOT NULL
+);
+SQL
+
+conn.exec <<-SQL
+CREATE TABLE IF NOT EXISTS services(
+id SERIAL PRIMARY KEY,
+name TEXT UNIQUE NOT NULL
+);
+SQL
+
+conn.exec <<-SQL
+CREATE TABLE IF NOT EXISTS requests(
+id SERIAL PRIMARY KEY,
+username TEXT NOT NULL,
+service_id INTEGER REFERENCES services(id)
+);
+SQL
+
+services=["Web hosting","Domain purchase","SEO optimization","Email setup"]
+services.each do |service|
+    conn.exec_params("INSERT INTO services (name) VALUES ($1) ON CONFLICT DO NOTHING",[service])
     
-    require 'sqlite3'
+end
 
-    db = SQLite3::Database.new 'db.sqlite3'
-
-    
-    db.execute <<-SQL
-    CREATE TABLE IF NOT EXISTS users (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        username TEXT UNIQUE,
-        password_digest TEXT
-    );
-    SQL
-
-    
-    db.execute <<-SQL
-    CREATE TABLE IF NOT EXISTS services (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT UNIQUE
-    );
-    SQL
-
-    db.execute <<-SQL
-    CREATE TABLE IF NOT EXISTS requests (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        username TEXT,
-        service_id INTEGER,
-        FOREIGN KEY(service_id) REFERENCES services(id)
-    );
-    SQL
-
-    services = ["Web Hosting", "Domain Purchase", "SEO Optimization", "Email Setup"]
-    services.each do |service|
-    db.execute("INSERT OR IGNORE INTO services (name) VALUES (?)", [service])
-    end
-
-    puts "Database setup complete."
+puts "postgres db setup completed"

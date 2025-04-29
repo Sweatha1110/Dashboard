@@ -11,4 +11,7 @@ gem 'sqlite3'
 gem 'jwt'
 gem 'dotenv'
 gem 'sinatra-cross_origin'
-
+gem 'pg'
+gem 'bcrypt'
+gem 'puma'
+gem 'rackup'

@@ -1,19 +1,25 @@
 body{
-  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  /* background: linear-gradient(135deg, #b912cc, #de01b9); */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   min-height: 100vh;
   margin: 0;
+  padding-top: 60px;
 }
 
 .app-container
 {
+  /* background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);    background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%); */
+  /* background-color: #FF3CAC;
+  background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%); */
+  background-image: linear-gradient(to right, #243949 0%, #517fa4 100%);
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  padding-top: 20px;
 }
 
-.auth-card
+/* .auth-card
 {
   background: #ffffff;
   border-radius: 15px;
@@ -83,4 +89,4 @@ button {
   color: white;
   border-radius: 8px;
   width: fit-content;
-}
+} */

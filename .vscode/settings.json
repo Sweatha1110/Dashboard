@@ -1,0 +1,6 @@
+{
+    "makefile-tools.enabled": true,
+    "makefile.configureOnOpen": true,
+"makefile.extensionOutputLogging": "verbose"
+
+}

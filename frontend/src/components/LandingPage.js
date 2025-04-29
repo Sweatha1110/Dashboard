@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Navbar from "./Navbar";
-
+import "./LandingPage.css"; 
+import Navbar from "./Navbar"; 
 const LandingPage = ({ username, onLogout }) => {
   const [view, setView] = useState("home");
   const [allServices, setAllServices] = useState([]);
@@ -14,14 +14,16 @@ useEffect(() => {
   
     if (view === "request") {
 
-      axios.get("/services", {headers: {Authorization: token}})
-        .then((res) => setAllServices(res.data))
+      axios.get("/api/services", {headers: {Authorization: token}})
+        .then((res) => {console.log(res.data);
+         setAllServices(res.data);})
+        
         .catch(() => setAllServices([]));
     }
   
-    if (view === "view") {
+    if (username && view === "view") {
       
-      axios.get(`/requested_services/${username}`, {headers: {Authorization: token}})
+      axios.get(`/api/requested_services/${username}`, {headers: {Authorization: token}})
         .then((res) => setReqService(res.data))
         .catch(() => setReqService([]));
     }
@@ -29,7 +31,7 @@ useEffect(() => {
   
   const requestingServices = (service_id) => {
     const token=sessionStorage.getItem('jwt');
-    axios.post("/request_service", {
+    axios.post("/api/request_service", {
       username: username,
       service_id: service_id
     }, {headers: {Authorization: token}})
@@ -39,9 +41,9 @@ useEffect(() => {
 
   return (
     <div>
-      <Navbar setView={setView} onLogout={onLogout} />
-
-      <div className="container mt-4">
+      <Navbar  setView={setView} onLogout={onLogout} />
+     
+      <div className="container mt-5">
         {view === "home" && (
           <div className="About-us">
             <h1>Welcome, {username} to the Cloud Dashboard</h1>
@@ -64,29 +66,44 @@ useEffect(() => {
         )}
 
         {view === "request" && (
-          <div>
+          <div class="req-content">
             <h2>Requesting services</h2>
             <br></br>
             {allServices.map((service) => (
-              <div className="req-services" key={service.id}>
+              <div  className="req-services" key={service.id}>
+               <div className="card">
                 <h5>{service.name}</h5>
                 <button className="request-btn" onClick={() => requestingServices(service.id)}>
                   Request
                 </button>
+                </div>
               </div>
             ))}
           </div>
         )}
 
         {view === "view" && (
-          <div>
-            <h2>Used services</h2>
+         
+          
+          <div class="card">
+            <div class="card-body">
+            <h2 class="card-title">Used services</h2>
             <br></br>
-            <ul className="used-services-list">
-              {reqService.map((s, i) => (
-                <li className="used-list" key={i}>{s}</li>
+            <ul  className="used-services-list">
+              { 
+              Object.entries(
+                
+              reqService.reduce((acc,service_name)=>
+              { 
+              
+                acc[service_name]=(acc[service_name] || 0)+1;
+                return acc;
+              },{})
+            ).sort(([a],[b])=>a.localeCompare(b)).map(([s,c], i) => (
+                <li  className="card-text used-list" key={i}>{s} {c}</li>
               ))}
             </ul>
+            </div>
           </div>
         )}
       </div>

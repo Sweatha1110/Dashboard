@@ -1,0 +1,51 @@
+#for db- postgres
+version: '3.9'
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: meraki
+      POSTGRES_USER: sweatha
+      POSTGRES_PASSWORD: 1234
+
+
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD", "pg_isready","-U","sweatha","-d","meraki"]
+      interval: 5s
+      timeout: 30s
+      retries: 5
+      start_period: 10s
+
+#ruby be
+
+  backend:
+    build: ./backend
+    ports: 
+      - "4567:4567"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_NAME: meraki
+      DB_USER: sweatha
+      DB_PASSWORD: 1234
+      DB_HOST: db
+      JWT_SECRET: 158bdcf923ee9332e157c89aacb3acd06e2063151892b2d701228a7fcd4b6cf77359fa5123088441629222dff2f8f443344d0c160e71db44eaaaa0e6b8fddc9c
+    # volumes:
+    #   - ./backend:/app
+  
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    # volumes:
+    #   - ./frontend:/app
+volumes:
+  db_data:

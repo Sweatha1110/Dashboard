@@ -2,6 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     base64 (0.2.0)
+    bcrypt (3.1.20)
     dotenv (3.1.8)
     json (2.10.2)
     jwt (2.10.1)
@@ -9,6 +10,10 @@ GEM
     logger (1.7.0)
     mustermann (3.0.3)
       ruby2_keywords (~> 0.0.1)
+    nio4r (2.7.4)
+    pg (1.5.9)
+    puma (6.6.0)
+      nio4r (~> 2.0)
     rack (3.1.13)
     rack-cors (2.0.2)
       rack (>= 2.0.0)
@@ -19,6 +24,8 @@ GEM
     rack-session (2.1.0)
       base64 (>= 0.1.0)
       rack (>= 3.0.0)
+    rackup (2.2.1)
+      rack (>= 3)
     ruby2_keywords (0.0.5)
     sinatra (4.1.1)
       logger (>= 1.6.0)
@@ -53,10 +60,14 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
+  bcrypt
   dotenv
   json
   jwt
+  pg
+  puma
   rack-cors
+  rackup
   sinatra
   sinatra-cross_origin
   sqlite3

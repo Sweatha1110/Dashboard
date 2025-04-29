@@ -1,0 +1,40 @@
+
+
+.navbar
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 60px;
+    box-shadow:0px 5px 15px rgba(0,0,0,0.1);
+}
+.navbar-brand
+{
+    font-size:2rem;
+    font-weight: bold;
+}
+.nav-link
+{
+    font-weight:600;
+    transition: color 0.3s ease;
+    color:white !important;
+}
+
+.nav-link:hover
+{
+    color:#4cd6da
+}
+
+.btn-primary
+{
+    background-color:#047be4;
+    border:none;
+    font-weight:600;
+}
+.btn-primary:hover
+{
+    background-color:#a3cef4
+   
+}
